@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stayle.css">
+    <title>todo-list</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="todo-card">
+            <h1>todo-list <img src="/images/icon.png"></h1>
+            <div class="form">
+                <input type="text" id="input-text" placeholder="Your text">
+                <button class="button" onclick="addTask()">add</button>
+            </div>
+            <ul class="list-itms">
+                <!-- <li class="checked">task1</li> -->
+                <!-- <li>task1</li> -->
+            </ul>
+        </div>
+
+    </div>
+    <script>
+        const addProject = document.querySelector("#input-text");
+        const contTask = document.querySelector("ul");
+
+
+        function addTask() {
+            if (addProject.value === "") {
+                alert("error 404");
+            } else {
+                let addli = document.createElement("li");
+                addli.innerHTML = addProject.value;
+                contTask.appendChild(addli);
+                let exit = document.createElement("span");
+                exit.innerHTML = "x";
+                addli.appendChild(exit);
+            }
+            addProject.value = "";
+        }
+        contTask.addEventListener("click", function (e) {
+            if (e.target.TagName === "li") {
+                e.target.className.toggle("checked");
+            } else if (e.target.TagName === "span") {
+                e.target.parentElement.remove();
+            }
+            false;
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
